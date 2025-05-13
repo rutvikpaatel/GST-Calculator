@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GST Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>GST Calculator</h2>
+
+  <label for="gstRate">GST Rate</label>
+  <div id="gstRate" class="gst-buttons">
+    <button class="gst-button" data-rate="5">5%</button>
+    <button class="gst-button" data-rate="12">12%</button>
+    <button class="gst-button" data-rate="18">18%</button>
+    <button class="gst-button" data-rate="28">28%</button>
+  </div>
+
+  <label for="baseAmount">Taxable Amount (Without GST)</label>
+  <input type="number" id="baseAmount" placeholder="Enter base amount">
+
+  <label for="gstAmount">GST Amount</label>
+  <input type="number" id="gstAmount" placeholder="Enter GST amount">
+
+  <label for="totalAmount">Total Amount (With GST)</label>
+  <input type="number" id="totalAmount" placeholder="Enter total amount">
+
+  <div class="result">
+    <table>
+      <thead>
+        <tr>
+          <th>Tax Type</th>
+          <th>Tax %</th>
+          <th>Amount (₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CGST</td>
+          <td id="cgstRate">0%</td>
+          <td id="cgst">0.00</td>
+        </tr>
+        <tr>
+          <td>SGST</td>
+          <td id="sgstRate">0%</td>
+          <td id="sgst">0.00</td>
+        </tr>
+        <tr>
+          <td>IGST</td>
+          <td id="igstRate">0%</td>
+          <td id="igst">0.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Total with GST:</strong> ₹<span id="total">0.00</span></p>
+  </div>
+
+  <button onclick="clearFields()">Clear</button>
+  <div class="note">Enter any one value (Base, GST or Total), others will auto calculate.</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
