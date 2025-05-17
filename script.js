@@ -9,18 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const igstEl = document.getElementById('igst');
   const totalEl = document.getElementById('total');
 
+  function showCustomAlert() {
+    const alertBox = document.getElementById('custom-alert');
+    alertBox.style.display = 'block';
+    setTimeout(() => {
+      alertBox.style.display = 'none';
+    }, 2500);
+  }
+
   gstRateButtons.forEach(button => {
     button.addEventListener('click', () => {
       gstRateButtons.forEach(btn => btn.classList.remove('selected'));
       button.classList.add('selected');
       const rate = parseFloat(button.getAttribute('data-rate'));
 
-      // Update tax rate labels immediately
       document.getElementById('cgstRate').textContent = (rate / 2).toFixed(2) + '%';
       document.getElementById('sgstRate').textContent = (rate / 2).toFixed(2) + '%';
       document.getElementById('igstRate').textContent = rate.toFixed(2) + '%';
 
-      // Perform calculations only if input is provided
       if (baseInput.value) {
         calculateFromBase(rate);
       } else if (gstInput.value) {
@@ -99,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const selectedRate = parseFloat(selectedButton.getAttribute('data-rate'));
       calculateFromBase(selectedRate);
     } else {
-      alert('Please select a GST Rate.');
+      showCustomAlert();
       baseInput.value = '';
     }
   });
@@ -112,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const selectedRate = parseFloat(selectedButton.getAttribute('data-rate'));
       calculateFromGST(selectedRate);
     } else {
-      alert('Kindly select GST RATE');
+      showCustomAlert();
       gstInput.value = '';
     }
   });
@@ -125,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const selectedRate = parseFloat(selectedButton.getAttribute('data-rate'));
       calculateFromTotal(selectedRate);
     } else {
-      alert('Please select a GST Rate.');
+      showCustomAlert();
       totalInput.value = '';
     }
   });
